@@ -1,0 +1,11 @@
+{
+  "projects": [
+    "src",
+    "test",
+    ".src/ImageManager",
+    "wrap"
+  ],
+  "sdk": {
+    "version": "1.0.0-beta7"
+  }
+}

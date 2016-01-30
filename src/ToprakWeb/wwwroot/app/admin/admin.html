@@ -1,0 +1,38 @@
+﻿<div data-ng-controller="adminController as vm">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <!--<div id="map_canvas">
+                <ui-gmap-google-map id="gonulluMap" center='vm.map.center' zoom='vm.map.zoom' dragging="true" options="vm.map.options" events="vm.map.events" control="vm.mapControl" refresh="vm.map.refresh" ng-cloak>
+                    <ui-gmap-circle ng-repeat="c in vm.map.locations track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius="c.radius"
+                                    visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
+                </ui-gmap-google-map>
+            </div>-->
+
+            <accordion>
+                <accordion-group heading="Gönüllü şehirleri">
+
+                    <div id="gonulluLocationGrid" ui-grid="vm.gonulluLocationGridOptions" class="myGrid" cg-busy="{promise:vm.topGonullu.waitPromise,message:'Gönüllüler yükleniyor'}"></div>
+                </accordion-group>
+
+                <accordion-group heading="En fazla tutanak işleyen gönüllüler">
+                    <div id="gonulluGrid" ui-grid="vm.gonulluGridOptions" class="myGrid" cg-busy="{promise:vm.topGonullu.waitPromise,message:'Gönüllüler yükleniyor'}"></div>
+                </accordion-group>
+                <accordion-group heading="En fazla görüntülenen tutanaklar">
+                    <div id="tutanakGrid" ui-grid="vm.tutanakGridOptions" class="myGrid" cg-busy="{promise:vm.topSeenTutanak.waitPromise,message:'Tutanaklar yükleniyor'}"></div>
+                </accordion-group>
+                <accordion-group heading="Okunamayan tutanaklar">
+                    <div id="tutanakGrid" ui-grid="vm.unreadableTutanak" class="myGrid" cg-busy="{promise:vm.topSeenTutanak.waitPromise,message:'Tutanaklar yükleniyor'}"></div>
+                </accordion-group>
+                <accordion-group heading="Kalan tutanaklar - {{vm.kalanTutanakGridOptions.data.length}} - Sihirli sayı - {{vm.kalanTutanakQueueLength}}">
+                    <div id="kalanTutanakGrid" ui-grid="vm.kalanTutanakGridOptions" class="myGrid" cg-busy="{promise:vm.remainingTutanak.waitPromise,message:'Kalan tutanaklar yükleniyor'}"></div>
+                    <!--<button class="btn btn-danger" ng-click="vm.magicButton()">Sihirli düğme - ne yaptığı bilmiyorsanız basmayınız!</button>-->
+                </accordion-group>
+                <accordion-group heading="Tutanak yükleme">
+                    <div data-ng-include="'/app/upload/upload.html'"></div>
+                </accordion-group>
+            </accordion>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

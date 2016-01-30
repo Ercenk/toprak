@@ -1,0 +1,118 @@
+﻿<div data-ng-controller="layoutController as vm">
+    <div>
+        <div class="row">
+            <div class="media">
+                <a class="pull-left" href="/"><img class="media-object" src="/images/GO.jpg" /></a>
+                <h1>
+                    <a href="/">Gurbetin Oyları</a>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <!--<div id="map_canvas">
+                <button ng-click="vm.remove()">Remove</button>
+                <ui-gmap-google-map id="gonulluMap" center='vm.map.center' zoom='vm.map.zoom' dragging="true" options="vm.map.options" events="vm.map.events" control="vm.mapControl" refresh="vm.map.refresh">
+                    <ui-gmap-circle ng-repeat="c in vm.map.locations track by c.id" center="c.center" stroke="c.stroke" fill="c.fill" radius="c.radius"
+                                    geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
+                </ui-gmap-google-map>
+            </div>-->
+
+            <!--<map center="37.09024, -95.712891" zoom="4" maptypeid="TERRAIN">
+                <shape name="circle" ng-repeat="city in vm.map.mapLocations" stroke-color="#FF0000" stroke-opacity="0.8" stroke-weight="2" fill-color="#FF0000" fill-opacity="0.35" center="{{city.center}}" radius="{{city.radius}}">
+                </shape>
+   
+            </map>-->
+
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <div class="row">
+                    <h4 ng-show="vm.firstName">Merhaba {{vm.firstName}}</h4>
+                    <h4 ng-show="!vm.firstName">Merhaba, kişisel istatiklerinizi görmek için Facebook ile giriş yapınız.</h4>
+                </div>
+                <div class="row">
+                    <div data-ng-include="'/app/login/login.html'"></div>
+                </div>
+                <div class="row" data-ng-show="vm.isAdmin">
+                    <button class="btn btn-warning" ng-click="vm.toggleView()">{{vm.buttonText}}</button>
+
+                </div>
+
+            </div>
+            <div cg-busy="{promise:vm.waitPromise,message:'İstatikler güncelleniyor'}" class="col-md-2">
+                <div class="panel panel-info">
+                    <div class="panel panel-heading">Gönüllü istatistikleri</div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-show="vm.firstName">
+                                <span class="badge">{{vm.userStats.Rank}}</span>
+                                <small><strong>{{vm.firstName}}</strong> toplam {{vm.userStats.TotalUsers}} gönüllü arasındaki sıralaması</small>
+                            </li>
+                            <li class="list-group-item" ng-show="vm.firstName">
+                                <span class="badge">{{vm.userStats.UserTotal}}</span>
+                                <small><strong>{{vm.firstName}}</strong> tarafından eklenmiş tutanak</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div cg-busy="{promise:vm.waitPromise,message:'İstatikler güncelleniyor'}" class="col-md-2">
+                <div class="panel panel-info">
+                    <div class="panel panel-heading">Genel istatistikler</div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge">{{vm.userStats.Highest}}</span>
+                                <small>Tek gönüllü tarafından yapılan en fazla analiz</small>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">{{vm.userStats.TotalUsers}}</span>
+                                <small>Tanınan toplam gönüllü sayısı</small>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">{{vm.userStats.TotalResponses}}</span>
+                                <small>Verisi girilmiş tutanak</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Kullanım notları</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>
+                                <strong>Gönüllü email</strong> adresi hariç bütün alanlar zorunludur. Veri girilmesi gerekli alanlar kırmızı ile işaretlenmiştir.
+                            </li>
+                
+                            <li>
+                                Size ait <strong>istatistikleri</strong> görmek için Facebook ile kendinizi tanıttığınızda email adresiniz otomatik olarak doldurulur.
+                            </li>
+                            <li>
+                                Form resminde <strong>boş gördüğünüz alanlar</strong> için lütfen 0 (sıfır) giriniz.
+                            </li>
+                            <li>
+                                Kutu 9, kutu 14 ve "Toplam Oy" alanları altında, veri girişinize yardımcı olmak için, girdiğiniz veriler kaynak alınarak toplamlar görüntülenir. Eğer formda aynı sonuç yoksa <strong>form resminde gördüğünüz değeri giriniz.</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <hr />
+        </div>
+    </div>
+
+    <section id="content" class="content">
+        <div class="row">
+            <div data-ng-view class="shuffle-animation"></div>
+        </div>
+
+    </section>
+</div>

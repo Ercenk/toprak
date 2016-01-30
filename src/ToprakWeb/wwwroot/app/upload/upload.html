@@ -1,0 +1,48 @@
+﻿<section class="mainbar" data-ng-controller="uploadController as vm">
+    <div class="row">
+        <div class="col-md-3"><input type="file" nv-file-select="" uploader="vm.uploader" multiple/> <br/></div>
+        <div class="col-md-9" style="margin-bottom: 40px">
+            <p>Yüklenecek tutanak resimleri sayısı: {{vm.uploader.queue.length}}</p>
+            <div class="progress" style="">
+               <div class="progress-bar" role="progressbar" data-ng-style="{ 'width': vm.uploader.progress + '%' }"></div>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-success btn-s" data-ng-click="vm.uploader.uploadAll()" data-ng-disabled="!vm.canUpload()">
+                    <span class="glyphicon glyphicon-upload"></span> Resimleri Yükle
+                </button>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="50%">Dosya adı</th>
+                        <th data-ng-show="vm.uploader.isHTML5">Dosya boyu</th>
+                        <th ng-show="uploader.isHTML5">Progress</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="item in vm.uploader.queue">
+                        <td>
+                            <strong>{{ item.file.name }}</strong>
+                            <div ng-show="vm.uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                        </td>
+                        <td ng-show="vm.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                        <td ng-show="uploader.isHTML5">
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</section>

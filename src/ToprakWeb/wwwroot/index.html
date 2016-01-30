@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="tr" ng-app="toprakWeb" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="tr" ng-app="toprakWeb" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="tr" ng-app="toprakWeb" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="tr" ng-app="toprakWeb" class="no-js">
+<!--<![endif]-->
+<head>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none !important;
+        }
+
+        /*
+          Allow angular.js to be loaded in body, hiding cloaked elements until
+          templates compile.  The !important is important given that there may be
+          other selectors that are more specific or come later and might alter display.
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+
+        /* Original Bootstrap's CSS depends on empty href attributes to style cursors for several components (pagination, tabs etc.).
+            But in AngularJS adding empty href attributes to link tags will cause unwanted route changes.
+            This is why we need to remove empty href attributes from directive templates and as a result styling is not applied correctly.
+            The remedy is simple, just add the following styling to your application:*/
+        .nav, .pagination, .carousel, .panel-title a {
+            cursor: pointer;
+        }
+    </style>
+
+    <meta charset="utf-8" lang="tr" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <script>
+        // Must be first. IE10 mobile viewport fix
+        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+    <!--Site specific-->
+    <link href="css/ie10mobile.css" rel="stylesheet" />
+
+    <!--Libraries-->
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="lib/toastr/toastr.css" rel="stylesheet" />
+    <link href="css/social-buttons.css" rel="stylesheet" />
+    <link href="lib/angular-busy/angular-busy.css" rel="stylesheet" />
+    <link href="lib/angular-ui-grid/ui-grid.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+
+
+    <title>Gurbetin Oyları, Yurtdışı Tutanak Analizi</title>
+    <script type="text/javascript">
+        var appInsights = window.appInsights || function (config) { function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t }({ instrumentationKey: "5fbb8ddb-af00-4b5c-ac0b-29871fe59667" }); window.appInsights = appInsights; appInsights.trackPageView();</script>
+</head>
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy"><strong>Eski</strong> bir internet tarayıcısı kullanıyorsunuz. Tarayıcınızı <a href="http://browsehappy.com/">buradan</a> güncelleyebilirsiniz.</p>
+    <![endif]-->
+
+    <div class="container-fluid" role="main" data-ng-include="'/app/layout/layout.html'" class="ng-cloak">
+
+    </div>
+    <!--<div class="footer">
+        <span style="font-size:0.6em">Ercenk Keresteci tarafından geliştirilmiştir.</span>
+    </div>-->
+
+<!--Libraries-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
+    <script src="lib/jquery/js/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+    <!--<script src="lib/lodash/lodash.js"></script>-->
+<script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-simple-logger/angular-simple-logger.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-facebook/angular-facebook.js"></script>
+    <script src="lib/angular-busy/angular-busy.js"></script>
+    <script src="lib/toastr/toastr.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="lib/angular-cache/angular-cache.js"></script>
+    <script src="lib/angular-file-upload/angular-file-upload.min.js"></script>
+    <!--<script src="lib/angular-ui-bootstrap/src/typeahead/typeahead.js"></script>-->
+    <!--<script src="lib/angular-ui-bootstrap/src/collapse/collapse.js"></script>-->
+    <script src="lib/angular-ui-bootstrap/src/accordion/accordion.js"></script>
+<script src="lib/angular-ui-grid/ui-grid.js"></script>
+    <script src="lib/ngmap/ng-map.js"></script>
+<!--<script src='//maps.googleapis.com/maps/api/js'></script>-->    
+
+<!--<script src="lib/angular-google-maps/angular-google-maps.js"></script>-->
+
+    <!--Application-->
+    <script src="app/app.js"></script>
+    <script src="app/appConfig.js"></script>
+    <script src="app/config.exceptionHandler.js"></script>
+    <script src="app/config.routes.js"></script>
+    <script src="app/infrastructure/identityService.js"></script>
+    <script src="app/login/loginController.js"></script>
+    <script src="app/infrastructure/common.js"></script>
+    <script src="app/infrastructure/logger.js"></script>
+    <script src="app/infrastructure/services.js"></script>
+    <script src="app/infrastructure/ngThumb.js"></script>
+    <script src="app/infrastructure/selectDirective.js"></script>
+    <script src="app/infrastructure/rotateImage.js"></script>
+    <script src="app/layout/layoutController.js"></script>
+    <script src="app/tutanak/tutanakController.js"></script>
+    <script src="app/admin/adminController.js"></script>
+    <script src="app/upload/uploadController.js"></script>
+</body>
+
+</html>

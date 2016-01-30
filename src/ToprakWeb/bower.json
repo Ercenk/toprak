@@ -1,0 +1,52 @@
+{
+  "name": "ToprakWeb",
+  "private": true,
+  "authors": [
+    "Ercenk Keresteci"
+  ],
+  "description": "Vote tally sheets scrubbing applicaiton for Turkish elections",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "bootstrap-touch-carousel": "0.8.0",
+    "hammer.js": "2.0.4",
+    "jquery": "2.1.4",
+    "jquery-validation": "1.11.1",
+    "jquery-validation-unobtrusive": "3.2.2",
+    "angular": "^1.4.5",
+    "angular-sanitize": "^1.4.5",
+    "angular-animate": "^1.4.5",
+    "angular-busy": "^4.1.3",
+    "angular-resource": "^1.4.6",
+    "angular-bootstrap": "^0.14.2",
+    "angular-boostrap-form-validation": "^0.9.7",
+    "angular-facebook": "^0.2.3",
+    "angular-route": "^1.4.6",
+    "angular-cache": "^4.4.2",
+    "angular-ui-grid": "^3.0.7",
+    "angular-file-upload": "^2.1.4",
+    "Font-Awesome": "^4.4.0",
+    "toastr": "^2.1.2",
+    "underscore": "^1.8.3",
+    "angular-google-maps": "^2.2.1",
+    "ngmap": "^1.13.14"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "dist/js/*.*",
+      "css": "dist/css/*.*",
+      "fonts": "dist/fonts/*.*"
+    },
+    "jquery": {
+      "js": "dist/*.*"
+    },
+    "Font-Awesome": {
+      "css": "css/font-awesome.css",
+      "fonts": "fonts/*"
+    }
+  },
+  "resolutions": {
+    "angular": "1.4.5",
+    "angular-animate": "^1.4.5"
+  }
+}

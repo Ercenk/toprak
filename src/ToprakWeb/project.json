@@ -1,0 +1,60 @@
+{
+  "webroot": "wwwroot",
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Microsoft.AspNet.Mvc": "6.0.0-beta7",
+    "Microsoft.AspNet.Server.IIS": "1.0.0-beta7",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta7",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-beta7",
+    "Microsoft.ApplicationInsights.AspNet": "1.0.0-beta7",
+    "AngularJS.Intellisense": "1.0.3",
+    "Autofac": "4.0.0-beta7-130",
+    "Microsoft.Framework.Logging": "1.0.0-beta7",
+    "Newtonsoft.Json": "7.0.1",
+    "Microsoft.Framework.Configuration.Json": "1.0.0-beta7",
+    "Autofac.Framework.DependencyInjection": "4.0.0-beta7-130",
+    "Facebook": "7.0.10-beta",
+    "Google.Apis": "1.9.2",
+    "Microsoft.AspNet.Authentication": "1.0.0-beta7",
+    "System.Reflection.Emit": "4.0.1-beta-23225",
+    "Microsoft.AspNet.Http.Abstractions": "1.0.0-beta7",
+    "Microsoft.AspNet.DataProtection": "1.0.0-beta7",
+    "WindowsAzure.Storage": "6.0.0",
+    "Dapper": "1.42.0",
+    "Microsoft.Framework.Logging.EventLog": "1.0.0-beta7",
+    "Microsoft.Framework.Configuration.EnvironmentVariables": "1.0.0-beta7",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-beta7",
+    "Microsoft.Framework.Logging.Console": "1.0.0-beta7",
+    "Microsoft.Framework.Logging.Debug": "1.0.0-beta7",
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aspnet/HttpAbstractions"
+  },
+  "commands": {
+    "web": "Microsoft.AspNet.Hosting --config hosting.ini"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+      }
+    }
+  },
+
+  "exclude": [
+    "wwwroot",
+    "node_modules",
+    "bower_components"
+  ],
+  "publishExclude": [
+    "node_modules",
+    "bower_components",
+    "**.xproj",
+    "**.user",
+    "**.vspscc"
+  ],
+  "userSecretsId": "aspnet5-ToprakWeb-20151008015505"
+}

@@ -1,0 +1,288 @@
+﻿<div ng-controller="tutanakController as vm">
+
+    <form name="tutanakForm" cg-busy="{promise:vm.waitPromise,message:'Tutanak resmi yükleniyor'}" ng-submit="vm.formSubmit(tutanakForm.$valid)" novalidate>
+    <div ng-show="vm.denizBitti">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" ><img src="images/waiting.jpg"/></div>
+        <div class="col-md-3"></div>
+
+    </div>
+        <div class="col-md-8" ng-hide="vm.denizBitti">
+            <div class="col-md-12">
+                <div class="col-md-6 resmi-dondur-btn">
+                    <a href="" ng-click="vm.rotateImage()" class="btn btn-info btn-sm">
+                        <span class="fa fa-rotate-right"></span>
+                        <span id="rotateIcon">Resmi döndür</span>
+
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group" ng-class="{ 'has-error': tutanakForm.email.$touched && tutanakForm.email.$invalid }">
+                        <label ng-class="{reqValue: tutanakForm.email.$error.email}">
+                            Gönüllü email <span class="reqValue font-size:x-small">{{tutanakForm.email.$error.email ? " (geçerli bir adres giriniz)" : ""}}</span>:
+                            
+
+                        </label>
+                        <input type="email" name="email" ng-model="vm.tutanak.seenBy" ng-trim="true"  ng-disabled="vm.tutanak.seenByDisabled" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <img ng-src="{{vm.tutanakImageUrl}}" rotate-Image orientation="vm.orientation" class="img-responsive" id="tutanakImage" style="min-height: 100%; min-width: 100%;">
+            </div>
+        </div>
+
+        <div class="col-md-4 tutanak-field-container" ng-hide="vm.denizBitti">
+            <div class="col-md-11">
+                <div class="row">
+                </div>
+
+                <div class="row">
+                    <div class="form-group" ng-class="{ 'has-error': tutanakForm.okunabiliyor.$touched && tutanakForm.okunabiliyor.$invalid }">
+                        <label ng-class="{reqValue: vm.checkError(tutanakForm.okunabiliyor)}">
+                            Form okunabiliyor mu?:
+                        </label>
+                        <label>
+                            <input type="radio" ng-model="vm.tutanak.okunabiliyor" name="okunabiliyor" ng-required="true" ng-value="true">
+                            Evet
+                        </label>
+
+                        <label>
+                            <input type="radio" ng-model="vm.tutanak.okunabiliyor" name="okunabiliyor" ng-required="true" ng-value="false">
+                            Hayır
+                        </label>
+                    </div>
+                </div>
+                <div ng-show="vm.tutanak.okunabiliyor">
+                    <div class="row" cg-busy="{promise:vm.temsilciliklerPromise,message:'Ülkeler yükleniyor'}">
+                        <div class="form-group" ng-class="{ 'has-error': tutanakForm.ulkeadi.$touched && tutanakForm.ulkeadi.$invalid }">
+                            <label ng-class="{reqValue: vm.checkError(tutanakForm.ulkeadi)}">Ülke Adı: </label>
+                            <select id="ulkeadi" name="ulkeadi" ng-model="vm.ulke" ng-options="ulke.UlkeAdi for ulke in vm.ulkeler track by ulke.UlkeAdi" ng-required="vm.tutanak.okunabiliyor" ng-disabled="!vm.tutanak.okunabiliyor"></select>
+                        </div>
+                    </div>
+
+                    <div class="row" cg-busy="{promise:vm.temsilciliklerPromise,message:'Temsilcilikler yükleniyor'}">
+                        <div class="form-group" ng-class="{ 'has-error': tutanakForm.temsilcilik.$touched && tutanakForm.temsilcilik.$invalid }">
+                            <label ng-class="{reqValue: vm.checkError(tutanakForm.temsilcilik)}">TemsilcilikAdi: </label>
+                            <select id="temsilcilik" name="temsilcilik" ng-model="vm.temsilcilik" ng-options="temsilcilik.Temsilcilik for temsilcilik in vm.ulke.Temsilcilikler track by temsilcilik.Id" ng-required="vm.tutanak.okunabiliyor" ng-disabled="!vm.tutanak.okunabiliyor"></select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group" ng-class="{ 'has-error': tutanakForm.sandikkurulno.$touched && tutanakForm.sandikkurulno.$invalid }">
+                            <label ng-class="{reqValue: vm.checkError(tutanakForm.sandikkurulno)}">Sandık Kurul No: </label>
+                            <input type="text" name="sandikkurulno" ng-model="vm.tutanak.sandikkurulno" ng-required="vm.tutanak.okunabiliyor" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            <div role="alert"> </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group" ng-class="{ 'has-error': tutanakForm.sandiksayimkurulno.$touched && tutanakForm.sandiksayimkurulno.$invalid }">
+                            <label ng-class="{reqValue: vm.checkError(tutanakForm.sandiksayimkurulno)}">
+                                Sandık Sayım Kurul No:
+                            </label>
+                            <input type="text" name="sandiksayimkurulno" ng-model="vm.tutanak.sandiksayimkurulno" ng-required="vm.tutanak.okunabiliyor" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <hr />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 birinci-column">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.sandiksecmensayisi1.$touched && tutanakForm.sandiksecmensayisi1.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.sandiksecmensayisi1)}">(1) </label>
+                                <input name="sandiksecmensayisi1" ng-model="vm.tutanak.sandiksecmensayisi1" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.oykullanan2.$touched && tutanakForm.oykullanan2.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.oykullanan2)}">(2) </label>
+                                <input name="oykullanan2" ng-model="vm.tutanak.oykullanan2" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.sandiktancikanzarf3.$touched && tutanakForm.sandiktancikanzarf3.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.sandiktancikanzarf3)}">(3) </label> <input name="sandiktancikanzarf3" ng-model="vm.tutanak.sandiktancikanzarf3" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.secimtorbasindancikanzarf4.$touched && tutanakForm.secimtorbasindancikanzarf4.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.secimtorbasindancikanzarf4)}">(4) </label> <input name="secimtorbasindancikanzarf4" ng-model="vm.tutanak.secimtorbasindancikanzarf4" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.yokedilenzarf5.$touched && tutanakForm.yokedilenzarf5.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.yokedilenzarf5)}">(5) </label> <input name="yokedilenzarf5" ng-model="vm.tutanak.yokedilenzarf5" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.gecerlizarf6.$touched && tutanakForm.gecerlizarf6.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.gecerlizarf6)}">
+                                    (6)
+                                </label> <input name="gecerlizarf6" ng-model="vm.tutanak.gecerlizarf6" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4 gecerli-oylar-column">
+                            <div class="header-text">GECERLI OYLAR</div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.itirazolmadangecerlioy7.$touched && tutanakForm.itirazolmadangecerlioy7.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.itirazolmadangecerlioy7)}">(7) </label> <input name="itirazolmadangecerlioy7" ng-model="vm.tutanak.itirazolmadangecerlioy7" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.itirazuzerinegecerlioy8.$touched && tutanakForm.itirazuzerinegecerlioy8.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.itirazuzerinegecerlioy8)}">(8) </label> <input name="itirazuzerinegecerlioy8" ng-model="vm.tutanak.itirazuzerinegecerlioy8" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="break-line"></div>
+
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.gecerlioytoplam9.$touched && tutanakForm.gecerlioytoplam9.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.gecerlioytoplam9)}">(9) </label> <input name="gecerlioytoplam9" ng-model="vm.tutanak.gecerlioytoplam9" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                                <div role="alert" ng-show="(vm.toplamHesapla9() != vm.tutanak.gecerlioytoplam9)"> <span class="alert">Hesaplanan: {{vm.toplamHesapla9()}}</span></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 gecersiz-oylar-column">
+                            <div class="header-text">GECERSIZ OYLAR</div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.gecersizzarf10.$touched && tutanakForm.gecersizzarf10.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.gecersizzarf10)}">(10) </label> <input name="gecersizzarf10" ng-model="vm.tutanak.gecersizzarf10" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.boszarf11.$touched && tutanakForm.boszarf11.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.boszarf11)}">(11) </label> <input name="boszarf11" ng-model="vm.tutanak.boszarf11" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.gercersizsayilanoy12.$touched && tutanakForm.gercersizsayilanoy12.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.gercersizsayilanoy12)}">(12) </label> <input name="gercersizsayilanoy12" ng-model="vm.tutanak.gercersizsayilanoy12" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.hesabakatilmayanoy13.$touched && tutanakForm.hesabakatilmayanoy13.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.hesabakatilmayanoy13)}">(13) </label> <input name="hesabakatilmayanoy13" ng-model="vm.tutanak.hesabakatilmayanoy13" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                            <div class="break-line"></div>
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.gecersizsayilanveyahesabakatilmayanoy14.$touched && tutanakForm.gecersizsayilanveyahesabakatilmayanoy14.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.gecersizsayilanveyahesabakatilmayanoy14)}">(14) </label> <input name="gecersizsayilanveyahesabakatilmayanoy14" ng-model="vm.tutanak.gecersizsayilanveyahesabakatilmayanoy14" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                                <div role="alert" ng-show="(vm.toplamHesapla14() != vm.tutanak.gecersizsayilanveyahesabakatilmayanoy14)"> <span class="alert">Hesaplanan: {{vm.toplamHesapla14()}}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <hr />
+                    </div>
+
+                    <div class="partiler">
+                        <div class="row">
+                            <div class="col-md-6 siyasi-parti-adi">Siyasi Parti Adi</div>
+                            <div class="col-md-6 aldigi-oy">Aldigi Oy</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.chp.$touched && tutanakForm.chp.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.chp)}">CHP: </label>
+                                <input name="chp" ng-model="vm.tutanak.chp" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox parti" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.sp.$touched && tutanakForm.sp.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.sp)}">Saadet Partisi: </label> <input name="sp" ng-model="vm.tutanak.sp" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox parti" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                        </div>
+
+                        <div class="row top-buffer">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.mhp.$touched && tutanakForm.mhp.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.mhp)}">MHP: </label> <input name="mhp" ng-model="vm.tutanak.mhp" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox parti" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.hdp.$touched && tutanakForm.hdp.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.hdp)}">HDP: </label> <input name="hdp" ng-model="vm.tutanak.hdp" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox parti" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.akp.$touched && tutanakForm.akp.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.akp)}">AKP: </label> <input name="akp" ng-model="vm.tutanak.akp" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox parti" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.others.$touched && tutanakForm.others.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.others)}">Diğer partiler toplam: </label> <input name="others" ng-model="vm.tutanak.others" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox parti" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.toplam.$touched && tutanakForm.toplam.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.toplam)}">
+                                    Toplam Oy:
+                                </label>
+                                <input name="toplam" ng-model="vm.tutanak.toplam" ng-required="vm.tutanak.okunabiliyor" ng-pattern="/(^0$)|(^[1-9]\d{0,8}$)/" class="oybox parti" ng-trim="true" ng-disabled="!vm.tutanak.okunabiliyor" />
+
+                                <div role="alert" ng-show="(vm.toplamHesapla() != vm.tutanak.toplam)"> <span class="alert">Hesaplanan: {{vm.toplamHesapla()}}</span></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <hr />
+                        </div>
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.baskanImzasi.$touched && tutanakForm.baskanImzasi.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.baskanImzasi)}">
+                                    Başkan imzası var mı?:
+                                </label>
+                                <label>
+                                    <input type="radio" ng-model="vm.tutanak.baskanImzasi" name="baskanImzasi" ng-required="vm.tutanak.okunabiliyor" ng-value="true" ng-disabled="!vm.tutanak.okunabiliyor">
+                                    Evet
+                                </label>
+
+                                <label>
+                                    <input type="radio" ng-model="vm.tutanak.baskanImzasi" name="baskanImzasi" ng-required="vm.tutanak.okunabiliyor" ng-value="false" ng-disabled="!vm.tutanak.okunabiliyor">
+                                    Hayır
+
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.uyeImzasi.$touched && tutanakForm.uyeImzasi.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.uyeImzasi)}">
+                                    En az iki üyenin imzası var mı?:
+                                </label>
+                                <label>
+                                    <input type="radio" ng-model="vm.tutanak.uyeImzasi" name="uyeImzasi" ng-required="vm.tutanak.okunabiliyor" ng-value="true" ng-disabled="!vm.tutanak.okunabiliyor">
+                                    Evet
+                                </label>
+
+                                <label>
+                                    <input type="radio" ng-model="vm.tutanak.uyeImzasi" name="uyeImzasi" ng-required="vm.tutanak.okunabiliyor" ng-value="false" ng-disabled="!vm.tutanak.okunabiliyor">
+                                    Hayır
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group" ng-class="{ 'has-error': tutanakForm.muhur.$touched && tutanakForm.muhur.$invalid }">
+                                <label ng-class="{reqValue: vm.checkError(tutanakForm.muhur)}">
+                                    Mühür var mı?:
+                                </label>
+                                <label>
+                                    <input type="radio" ng-model="vm.tutanak.muhur" name="muhur" ng-required="vm.tutanak.okunabiliyor" ng-value="true" ng-disabled="!vm.tutanak.okunabiliyor">
+                                    Evet
+                                </label>
+
+                                <label>
+                                    <input type="radio" ng-model="vm.tutanak.muhur" name="muhur" ng-required="vm.tutanak.okunabiliyor" ng-value="false" ng-disabled="!vm.tutanak.okunabiliyor">
+                                    Hayır
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="panel panel-danger" ng-show="tutanakForm.$invalid">
+                        <div class="panel-body">
+                            Lütfen kırmızı alanları tamamlayınız.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="tutanakForm.$invalid">Kaydet</button>
+
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </form>
+
+</div>

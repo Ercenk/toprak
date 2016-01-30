@@ -1,0 +1,23 @@
+{
+  "AppSettings": {
+    "SiteTitle": "ToprakWeb",
+    "FacebookAppId": "",
+    "FacebookAppSecret": "",
+    "GoogleClientId": "ta",
+    "GoogleClientSecret": "tada"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": ""
+    },
+    "ImageRepository": {
+      "ConnectionString": ""
+    },
+    "Database": {
+      "ConnectionString": ""
+    }
+  },
+  "ApplicationInsights": {
+    "InstrumentationKey": "5fbb8ddb-af00-4b5c-ac0b-29871fe59667"
+  }
+}

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B310D45C-D500-42D5-B31F-CEBC86A9A642}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{072F3F1D-EFC8-4D1F-BCB6-A91EE2F50DC2}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ToprakWeb", "src\ToprakWeb\ToprakWeb.xproj", "{FB7FE7A8-C357-4CD4-A848-BCA994B465E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageManager", "src\ImageManager\ImageManager.csproj", "{B05D0A74-7762-45DC-9C7F-4870C1A609CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToprakProcessing", "src\WebJobs\ToprakProcessing\ToprakProcessing.csproj", "{517BA672-DBCC-4C89-AD2C-3FA66625C3BB}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ToprakSQL", "src\ToprakSQL\ToprakSQL.sqlproj", "{15834D97-27C7-4EAA-A1ED-3C57B5EF92C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB7FE7A8-C357-4CD4-A848-BCA994B465E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB7FE7A8-C357-4CD4-A848-BCA994B465E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB7FE7A8-C357-4CD4-A848-BCA994B465E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB7FE7A8-C357-4CD4-A848-BCA994B465E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B05D0A74-7762-45DC-9C7F-4870C1A609CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05D0A74-7762-45DC-9C7F-4870C1A609CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05D0A74-7762-45DC-9C7F-4870C1A609CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05D0A74-7762-45DC-9C7F-4870C1A609CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{517BA672-DBCC-4C89-AD2C-3FA66625C3BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517BA672-DBCC-4C89-AD2C-3FA66625C3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517BA672-DBCC-4C89-AD2C-3FA66625C3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517BA672-DBCC-4C89-AD2C-3FA66625C3BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15834D97-27C7-4EAA-A1ED-3C57B5EF92C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15834D97-27C7-4EAA-A1ED-3C57B5EF92C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15834D97-27C7-4EAA-A1ED-3C57B5EF92C4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{15834D97-27C7-4EAA-A1ED-3C57B5EF92C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15834D97-27C7-4EAA-A1ED-3C57B5EF92C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15834D97-27C7-4EAA-A1ED-3C57B5EF92C4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FB7FE7A8-C357-4CD4-A848-BCA994B465E9} = {B310D45C-D500-42D5-B31F-CEBC86A9A642}
+		{B05D0A74-7762-45DC-9C7F-4870C1A609CE} = {B310D45C-D500-42D5-B31F-CEBC86A9A642}
+		{517BA672-DBCC-4C89-AD2C-3FA66625C3BB} = {B310D45C-D500-42D5-B31F-CEBC86A9A642}
+	EndGlobalSection
+EndGlobal

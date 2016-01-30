@@ -1,0 +1,190 @@
+﻿body {
+}
+
+.my-drop-zone {
+    border: dotted 3px lightgray;
+}
+
+.nv-file-over {
+    border: dotted 3px red;
+}
+/* Default class applied to drop zones on over */
+.another-file-over-class {
+    border: dotted 3px green;
+}
+
+html, body {
+    height: 100%;
+}
+
+canvas {
+    background-color: #f3f3f3;
+    -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    box-shadow: 3px 3px 3px 0 #e3e3e3;
+    border: 1px solid #c3c3c3;
+    height: 100px;
+    margin: 6px 0 0 6px;
+}
+
+.oybox {
+    width: 50px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+
+.resmi-dondur-btn {
+    text-align: center;
+}
+
+#rotateIcon {
+    margin-left: 5px;
+}
+
+.birinci-column {
+    margin: 0px;
+    padding: 0;
+}
+
+.gecerli-oylar-column {
+    margin: 0px;
+    padding: 0;
+    border: 1px solid black;
+}
+
+.gecersiz-oylar-column {
+    margin: 0px;
+    padding: 0;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
+.tutanak-field-container {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header-text {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.break-line {
+    border-bottom: 1px solid black;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.kutu-8 {
+    margin-bottom: 65px;
+}
+
+.parti {
+    float: right;
+}
+
+.reqValue {
+    color: red;
+}
+
+.partiler {
+    padding: 0px;
+    margin: 0px;
+    width: 70%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.siyasi-parti-adi {
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.evet-hayir {
+    float: right;
+    margin-left: 15px;
+}
+
+.aldigi-oy {
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.kutu-hesap {
+    margin: 0;
+    padding: 0;
+}
+
+.hesap-number {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+.kullanim {
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+#tutanakImage {
+    border: 1px solid black;
+}
+
+.typeahead .custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #f9f9f9;
+}
+
+    .typeahead .custom-popup-wrapper > .message {
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+        color: #868686;
+    }
+
+    .typeahead .custom-popup-wrapper > .dropdown-menu {
+        position: static;
+        float: none;
+        display: block;
+        min-width: 160px;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+.myGrid {
+    width: 1000px;
+    height: 250px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#map_canvas {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+
+
+        #map_canvas {
+            position: relative;
+        }
+
+.angular-google-map-container { height: 400px; }
